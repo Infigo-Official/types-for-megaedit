@@ -1,0 +1,28 @@
+{
+  "name": "types-for-megaedit",
+  "version": "1.0.0",
+  "description": "Type definitions for MegaEdit Scripting",
+  "dependencies": {},
+  "devDependencies": {
+    "better-docs": "^2.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Infigo-Offical/types-for-megaedit.git"
+  },
+  "keywords": [
+    "typedefinitions",
+    "megaedit",
+    "infigo"
+  ],
+  "author": "Infigo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Infigo-Offical/types-for-megaedit/issues"
+  },
+  "homepage": "https://github.com/Infigo-Offical/types-for-megaedit#readme"
+}
