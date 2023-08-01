@@ -5,7 +5,7 @@
     "typedocOptions": {
         "entryPoints": ["./v1"],
         "entryPointStrategy": "expand",
-        "out": "out",
+        "out": "docs",
         "disableSources": true
     },
     "allowJs": true
