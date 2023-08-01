@@ -21,16 +21,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }}, generate docs and publish
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
     - run: npm run docs
-    - name: Archive documentation
     - uses: actions/upload-pages-artifact@v2
       with:
         path: "docs"
-    - name: Deploy pages
     - uses: actions/deploy-pages@v2
