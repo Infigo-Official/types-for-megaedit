@@ -1,6 +1,7 @@
 # Types for MegaEdit
 
-Type definitions for the MegaEdit scripting interface
+Type definitions for the MegaEdit scripting interface.
+Full documentation is available [here](https://infigo-offical.github.io/types-for-megaedit/)
 
 ## Scripting Principles
 
