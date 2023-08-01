@@ -8,5 +8,6 @@
         "out": "docs",
         "disableSources": true
     },
-    "allowJs": true
+    "allowJs": true,
+    "include": [ "./v1/**/*.d.ts" ],
 }
