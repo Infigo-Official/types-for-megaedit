@@ -1,7 +1,65 @@
 /**
- * The information for a specified output type
+ * The _Global_ components used for the current job can be controlled within this module. See {@link Global} for more details how to get or set the components.
+ * 
+ * @example
+ * // Load current configuration - see developer tools for the result
+ * console.log("The current canvas and canvas size:");
+ * console.log(Document.Global.Get.CanvasAndSize());
+ * console.log("The current output type:");
+ * console.log(Document.Global.Get.OutputType());
+ * console.log("The current stock item:");
+ * console.log(Document.Global.Get.StockItem());
+ * 
+ * @module Document / Global Components
  */
-interface OutputTypeInfo {
+
+/**
+ * MegaEdit products have various components:
+ * - the {@link Canvas} along with a {@link CanvasSize}
+ * - the {@link StockItem}
+ * - the {@link OutputType}
+ * 
+ * The output type object controls elements like
+ * - bleed
+ * - cover options
+ * - gutter
+ * - print production
+ * - margins
+ * - how pages are set together (single page vs spread)
+ * 
+ * Multiple output types can be assigned to a product and the user can switch between them.
+ * 
+ * @example
+ * {
+    "id": "fb75ffbb-201e-4f29-9408-c5c3a7744748",
+    "description": null,
+    "name": "Mug",
+    "settings": {
+        "coverAddition": {
+            "width": 0,
+            "height": 0,
+            "wrap": 0,
+            "configuredCoverWrap": 0
+        },
+        "bleed": 0,
+        "configuredBleed": 0,
+        "duplexPrinting": false,
+        "gutter": {
+            "size": 0,
+            "url": ""
+        },
+        "margin": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+        },
+        "priceFactor": 1
+    },
+    "previewThumbnail": ""
+}
+ */
+type OutputType = {
     /**
      * The id of the output type (GUID)
      */
@@ -93,23 +151,23 @@ interface OutputTypeInfo {
 }
 
 /**
- * The dimension of the canvas in points.
+ * The canvas size is linked to a {@link Canvas} object and used together to define the final {@link Size}.
+ * The {@link Canvas} essentially defines the aspect ratio while the sizes define scale factors for the final dimensions.
+ * 
+ * @example
+ * {
+        "id": "52bcf395-4684-43a7-8b63-11aaa10e0bb9",
+        "name": "Default",
+        "priceFactorBasePrice": 1,
+        "priceFactorOutputType": 1,
+        "priceFactorPages": 1,
+        "dimension": {
+            "width": 2087.9999999987303,
+            "height": 2807.9999999983906
+        }
+    }
  */
-interface CanvasDimension {
-    /**
-     * The canvas width in points.
-     */
-    width: number;
-    /**
-     * The canvas height in points.
-     */
-    height: number;
-}
-
-/**
- * The information for a specified canvas size
- */
-interface CanvasSizeInfo {
+type CanvasSize = {
     /**
      * The id of the size item (GUID)
      */
@@ -133,13 +191,39 @@ interface CanvasSizeInfo {
     /**
      * The final dimensions of the canvas using this size item
      */
-    dimension: CanvasDimension;
+    dimension: Size;
 }
 
 /**
- * The information for a specified canvas
+ * MegaEdit products have various components:
+ * - the {@link Canvas} along with a {@link CanvasSize}
+ * - the {@link StockItem}
+ * - the {@link OutputType}
+ * 
+ * The canvas defines the aspect ratio of the product along with a list of available {@link CanvasSize} objects.
+ * The canvas and the assigned size together will result in the final {@link Size}
+ * 
+ * @example
+ * {
+        "name": "Wall Tapestry Portrait",
+        "description": "",
+        "id": "c3012fd2-8051-42a3-a5f2-e860c13a8798",
+        "sizes": [
+            {
+                "id": "52bcf395-4684-43a7-8b63-11aaa10e0bb9",
+                "name": "Default",
+                "priceFactorBasePrice": 1,
+                "priceFactorOutputType": 1,
+                "priceFactorPages": 1,
+                "dimension": {
+                    "width": 2087.9999999987303,
+                    "height": 2807.9999999983906
+                }
+            }
+        ]
+    }
  */
-interface CanvasInfo {
+type Canvas = {
     /**
      * The name of the canvas
      */
@@ -155,27 +239,80 @@ interface CanvasInfo {
     /**
      * The list of available sizes for this canvas
      */
-    sizes: CanvasSizeInfo[];
+    sizes: CanvasSize[];
 }
 
 /**
  * Result object when retrieving the current canvas and size.
+ * 
+ * @example
+ * {
+    "canvas": {
+        "name": "Wall Tapestry Portrait",
+        "description": "",
+        "id": "c3012fd2-8051-42a3-a5f2-e860c13a8798",
+        "sizes": [
+            {
+                "id": "52bcf395-4684-43a7-8b63-11aaa10e0bb9",
+                "name": "Default",
+                "priceFactorBasePrice": 1,
+                "priceFactorOutputType": 1,
+                "priceFactorPages": 1,
+                "dimension": {
+                    "width": 2087.9999999987303,
+                    "height": 2807.9999999983906
+                }
+            }
+        ]
+    },
+    "size": {
+        "id": "52bcf395-4684-43a7-8b63-11aaa10e0bb9",
+        "name": "Default",
+        "priceFactorBasePrice": 1,
+        "priceFactorOutputType": 1,
+        "priceFactorPages": 1,
+        "dimension": {
+            "width": 2087.9999999987303,
+            "height": 2807.9999999983906
+        }
+    }
+}
  */
-interface CanvasAndSizeResult {
+type CanvasAndSizeResult = {
     /**
      * The currently selected canvas
      */
-    canvas: CanvasInfo;
+    canvas: Canvas;
     /**
      * The currently selected canvas size
      */
-    size: CanvasSizeInfo;
+    size: CanvasSize;
 }
 
 /**
- * The information for a specified stock item
+* MegaEdit products have various components:
+ * - the {@link Canvas} along with a {@link CanvasSize}
+ * - the {@link StockItem}
+ * - the {@link OutputType}
+ * 
+ * This defines the stock used to produce the output. This is used to calculate weight and thickness, colour etc of the material/stock.
+ * 
+ * @example
+ * {
+    "id": "e8dc9f6c-f8c3-43f3-9d3f-75ccc3b801b4",
+    "description": "",
+    "name": "Canvas",
+    "settings": {
+        "price": 0,
+        "micron": 0
+    },
+    "preview": {
+        "css": "background-color: #ffffff;"
+        "thumbnail": ""
+    }
+}
  */
-interface StockItemInfo {
+type StockItem = {
     /**
      * The id of the stock item (GUID)
      */
@@ -217,97 +354,94 @@ interface StockItemInfo {
 }
 
 /**
- * Methods to set the current global settings.
- */
-interface GlobalSet {
-    /**
-     * Updates the current canvas and/or size. This can be used to change to a different size for the same canvas or a new canvas with new size altogether.
-     * This should not be used when the product is configured for dynamic sizing.
-     * @param canvasObjectOrId The canvas object or id to change to
-     * @param sizeObjectOrId  The size object or id to change to
-     * @param callback The callback function to call when the canvas and size have been updated. If the canvas/size is not being updated the callback will not be triggered.
-     * @param applySmartLayout Flag to control if the canvas and size change should use smart layout. Smart layout will attempt to apply a similary named layout (category + name) for the target canvas based on the currently used layouts. If the layout is not found or none is used, this will have no effect.
-     * @param refresh Flag to control if the editor would reinitialize itself. If additional operations are required after the canvas and size change, this should be set to false and the refresh should be called manually.
-     * @param maintainFieldSize Flag to control if the field sizes should be maintained. If smart layout is used, we will use the new layout dimenions. If smart layout is not used, the field sizes will be adjusted proportionally to the new canvas size. If this flag is used, the field dimensions will not be adjusted (ignored when smart layout is used).
-     */
-    CanvasAndSize: (
-        canvasObjectOrId: CanvasInfo | string,
-        sizeObjectOrId: CanvasSizeInfo | string,
-        callback?: () => void,
-        applySmartLayout?: boolean,
-        refresh?: boolean,
-        maintainFieldSize?: boolean
-    ) => void;
-    /**
-     * Updates the current stock item.
-     * @param objectOrId The stock item object or id to change to
-     * @returns Boolean flag to control if the stock item was changed
-     */
-    StockItem: (objectOrId: StockItemInfo | string) => boolean;
-    /**
-     * Updates the current output type.
-     * @param objectOrId The output type object or id to change to
-     * @returns 
-     */
-    OutputType: (objectOrId: OutputTypeInfo | string) => boolean;
-    /**
-     * Updates the current dynamic size. Can only be used if the product is configured for dynamic sizing. The dimensions are in points and will be restricted to be within the min/max dimensions of the product. Step sizes are not enforced.
-     * @param width The new width in points
-     * @param height The new height in points
-     * @param callback The optional callback. This will be called if the size was changed successfully. If the size could not be changed, no callback will be triggered.
-     * @param applySmartLayout Flag to control if the canvas and size change should use smart layout. Smart layout will attempt to apply a similary named layout (category + name) for the target canvas based on the currently used layouts. If the layout is not found or none is used, this will have no effect.
-     * @param refresh Flag to control if the editor would reinitialize itself. If additional operations are required after the canvas and size change, this should be set to false and the refresh should be called manually.
-     * @param maintainFieldSize Flag to control if the field sizes should be maintained. If smart layout is used, we will use the new layout dimenions. If smart layout is not used, the field sizes will be adjusted proportionally to the new canvas size. If this flag is used, the field dimensions will not be adjusted (ignored when smart layout is used).
-     * @param optionalPageId Optional page id. If null, all pages will change the size. If the setup allows different aspect ratios for different pages, optionally you can configure the page id to change only the size of a single page.
-     * @returns 
-     */
-    DynamicSize: (
-        width: number,
-        height: number,
-        callback?: () => void,
-        applySmartLayout?: boolean,
-        refresh?: boolean,
-        maintainFieldSize?: boolean,
-        optionalPageId?: string | undefined
-    ) => void;
-}
-
-/**
- * Methods to retrieve the current global settings.
- */
-interface GlobalGet {
-    /**
-     * Retrieve the currently selected canvas and size
-     * @returns {CanvasAndSizeResult} The currently selected canvas and size
-     */
-    CanvasAndSize: () => CanvasAndSizeResult;
-    /**
-     * Retrieve the currently selected stock item
-     * @returns {StockItemInfo} The currently selected stock item
-     */
-    StockItem: () => StockItemInfo;
-    /**
-     * Retrieve the currently selected output type
-     * @returns {OutputTypeInfo} The currently selected output type
-     */
-    OutputType: () => OutputTypeInfo;
-    /**
-     * Retrieve the dynamic size if this product is using dynamic sizes
-     * @returns {CanvasDimension | null} The current dynamic size or null if this product is not using dynamic sizes
-     */
-    DynamicSize: () => CanvasDimension | null;
-}
-
-/**
- * This object controls the global settings of the product.
+ * The _Global_ interface gives access to the global compontents which make up a MegaEdit product for the current job.
+ * 
+ * This includes 
+ * - The {@link Canvas} and {@link CanvasSize} which define the size/aspect ratio of the pages within the product
+ * - the dynamic size if that is enabled for the current product which allows to control the size directly and dynamically within a preconfigured range.
+ * - the {@link StockItem} which defines the stock used to produce. This is used to calculate weight and thickness
+ * - the {@link OutputType} which controls how the pages are set together (single page vs spread), if covers are used, the bleed and margin settings etc
+ * 
+ * There are separate methods available to retrieve each of those components as they are currently applied to the job and methods available to set and update each component for the current job.
  */
 interface Global {
     /**
-     * Methods to retrieve the current global settings.
+     * This property retrieves the currently applied components of the current job.
      */
-    Get: GlobalGet;
+    Get: {
+        /**
+         * Retrieve the currently selected canvas and size
+         * @returns {CanvasAndSizeResult} The currently selected canvas and size
+         */
+        CanvasAndSize(): CanvasAndSizeResult;
+        /**
+         * Retrieve the currently selected stock item
+         * @returns {StockItemInfo} The currently selected stock item
+         */
+        StockItem(): StockItem;
+        /**
+         * Retrieve the currently selected output type
+         * @returns {OutputTypeInfo} The currently selected output type
+         */
+        OutputType(): OutputType;
+        /**
+         * Retrieve the dynamic size if this product is using dynamic sizes
+         * @returns {Size | null} The current dynamic size or null if this product is not using dynamic sizes
+         */
+        DynamicSize(): Size | null;
+    };
     /**
-     * Methods to set the current global settings.
+     * This property updates and sets the components to the current job.
      */
-    Set: GlobalSet;
+    Set: {
+        /**
+         * Updates the current canvas and/or size. This can be used to change to a different size for the same canvas or a new canvas with new size altogether.
+         * This should not be used when the product is configured for dynamic sizing.
+         * @param canvasObjectOrId The canvas object or id to change to
+         * @param sizeObjectOrId  The size object or id to change to
+         * @param callback The callback function to call when the canvas and size have been updated. If the canvas/size is not being updated the callback will not be triggered.
+         * @param applySmartLayout Flag to control if the canvas and size change should use smart layout. Smart layout will attempt to apply a similary named layout (category + name) for the target canvas based on the currently used layouts. If the layout is not found or none is used, this will have no effect.
+         * @param refresh Flag to control if the editor would reinitialize itself. If additional operations are required after the canvas and size change, this should be set to false and the refresh should be called manually.
+         * @param maintainFieldSize Flag to control if the field sizes should be maintained. If smart layout is used, we will use the new layout dimenions. If smart layout is not used, the field sizes will be adjusted proportionally to the new canvas size. If this flag is used, the field dimensions will not be adjusted (ignored when smart layout is used).
+         */
+        CanvasAndSize(
+            canvasObjectOrId: Canvas | string,
+            sizeObjectOrId: CanvasSize | string,
+            callback?: () => void,
+            applySmartLayout?: boolean,
+            refresh?: boolean,
+            maintainFieldSize?: boolean
+        ): void;
+        /**
+         * Updates the current stock item.
+         * @param objectOrId The stock item object or id to change to
+         * @returns Boolean flag to control if the stock item was changed
+         */
+        StockItem(objectOrId: StockItem | string): boolean;
+        /**
+         * Updates the current output type.
+         * @param objectOrId The output type object or id to change to
+         * @returns Boolean flag to control if the output type was changed
+         */
+        OutputType(objectOrId: OutputType | string): boolean;
+        /**
+         * Updates the current dynamic size. Can only be used if the product is configured for dynamic sizing. The dimensions are in points and will be restricted to be within the min/max dimensions of the product. Step sizes are not enforced.
+         * @param width The new width in points
+         * @param height The new height in points
+         * @param callback The optional callback. This will be called if the size was changed successfully. If the size could not be changed, no callback will be triggered.
+         * @param applySmartLayout Flag to control if the canvas and size change should use smart layout. Smart layout will attempt to apply a similary named layout (category + name) for the target canvas based on the currently used layouts. If the layout is not found or none is used, this will have no effect.
+         * @param refresh Flag to control if the editor would reinitialize itself. If additional operations are required after the canvas and size change, this should be set to false and the refresh should be called manually.
+         * @param maintainFieldSize Flag to control if the field sizes should be maintained. If smart layout is used, we will use the new layout dimenions. If smart layout is not used, the field sizes will be adjusted proportionally to the new canvas size. If this flag is used, the field dimensions will not be adjusted (ignored when smart layout is used).
+         * @param optionalPageId Optional page id. If null, all pages will change the size. If the setup allows different aspect ratios for different pages, optionally you can configure the page id to change only the size of a single page.
+         */
+        DynamicSize(
+            width: number,
+            height: number,
+            callback?: () => void,
+            applySmartLayout?: boolean,
+            refresh?: boolean,
+            maintainFieldSize?: boolean,
+            optionalPageId?: string | undefined
+        ): void;
+    };
 }

@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "lib": ["es6"]
+    },
+    "typedocOptions": {
+        "entryPoints": ["./v1"],
+        "entryPointStrategy": "expand",
+        "out": "out",
+        "disableSources": true
+    },
+    "allowJs": true
+}

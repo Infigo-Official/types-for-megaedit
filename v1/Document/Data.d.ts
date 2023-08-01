@@ -1,4 +1,10 @@
 /**
+ * Store data against the job / current document using this feature.
+ * 
+ * @module Document / Data Storage
+ */
+
+/**
  * The data stored against the document can be managed with this object.
  * This will include data as a key value pair, which can hold arbitrary data.
  * This data store is useful to have a permanent store of data and state against the document.
@@ -17,27 +23,28 @@ interface Data {
     /**
      * Retrieve the data for the given key. If the key does not exist, it will return null.
      * Otherwise the data value type will be preserved.
+     * @typeparam T The type of the data to retrieve.
      * @param key The key for the data store.
      * @param callback The callback will be called with the data if it exists.
      */
-    Get: <T>(key: string, callback: (data: T) => void) => void;
+    Get<T>(key: string, callback: (data: T) => void): void;
     /**
      * Sets the data for the given key as any type. If the data key exists already, it will be overwritten.
+     * @typeparam T The type of the data to set.
      * @param key The key for the data store.
      * @param value The new value to use.
      * @param callback The callback will be triggered once the save has finished.
      */
-    Set: <T>(key: string, value: T, callback?: () => void) => void;
+    Set<T>(key: string, value: T, callback?: () => void): void;
     /**
      * Returns the currently saved meta data object. If no meta data has been saved, it will return null.
      * @param callback This call will be triggered with the meta data object as parameter
      */
-    GetMetaData: (callback: (data: unknown) => void) => void;
+    GetMetaData(callback: (data: unknown) => void): void;
     /**
      * Saves the meta data object. Note that only a single meta data object can exist at any time. Different scripts would have to consider a merge or overwrite strategy. This cannot be used in a batch context. For further information, see the Data object.
      * @param value The new meta data object to save. The type will be preserved, but converted to an XmpSchema in the final PDF
      * @param callback The callback will be triggered once the save has finished.
-     * @returns 
      */
-    SetMetaData: (value: unknown, callback: () => void) => void;
+    SetMetaData(value: unknown, callback: () => void): void;
 }

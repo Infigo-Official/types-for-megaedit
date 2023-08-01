@@ -1,7 +1,58 @@
 /**
- * This is hte response object for the Load method of the Batch data when requesting only the info.
+ * The _Batch_ module can be used to handle batch functionality used within the job. Please note that a batch plugin has to be configured in admin for this product to be functional.
+ * 
+ * @example
+ * // Example to load XLSX file - first workbook and map against 3 dummy variables
+ * // Load Excel library for legacy excel files
+ * Editor.Helper.LoadExternal("/Catfish.Web/Scripts/ME2k/lib/js/excel/jszip.js", function () {
+ *  Editor.Helper.LoadExternal("/Catfish.Web/Scripts/ME2k/lib/js/excel/xlsx.js", function () {
+ *    // Setup button
+ *    let button = new MEUIUpload(Editor.Loc.Get("batchuploadoptions.uploadbutton.label"), null, 
+ *      function(dummy, event, uploaded) {
+        try {
+            // load the excel file and convert to CSV
+            let wb = XLSX.read(uploaded.originalData);
+            var csv = XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]]);
+
+            // Save the CSV data now
+            Document.Batch.Save(csv, function(shortInfo) {            
+                Editor.UI.ShowMessage(shortInfo.Valid ? "Success" : "Failure: " + shortInfo.error);
+                console.log(shortInfo);
+            });
+        } catch(e) {
+            console.log(e);
+        }    
+ *    });
+      Editor.UI.Add(null, Editor.Constants.EditorUITarget.BatchArea, button);
+    });
+ * });
+ * 
+ * 
+ * @module Document / Batch Feature
  */
-interface BatchLoadInfoResponse {
+
+/**
+ * This is the response object for the Load method of the Batch data when requesting only the info.
+ * 
+ * @example
+ * {
+    "Valid": true,
+    "Header": [
+        "Check / Issue",
+        "Actions",
+        "Comments"
+    ],
+    "RecordCount": 16,
+    "ExampleRecord": [
+        "Disk Space",
+        "Alert...",
+        ""
+    ],
+    "PricePerRecord": null,
+    "Data": null
+}
+ */
+type BatchLoadInfoResponse = {
     /**
      * This adds additional data availalbe for the batch data. This is controlled by the batch plugin.
      * The CSV plugin doesn't set this property.
@@ -34,7 +85,7 @@ interface BatchLoadInfoResponse {
 /**
  * This is the response object for the Load method of the Batch data when requesting the full data set.
  */
-interface BatchLoadFullResponse {
+type BatchLoadFullResponse = {
     /**
      * Boolean flag to indicate if the load was successful.
      */
@@ -48,7 +99,7 @@ interface BatchLoadFullResponse {
 /**
  * The result of a batch save operation.
  */
-interface BatchSaveResult {
+type BatchSaveResult = {
     /**
      * Boolean flag to indicate if the save was successful.
      */
@@ -60,10 +111,25 @@ interface BatchSaveResult {
 }
 
 /**
+ * The batch mapping item defines the value part of how a variable item will be mapped using the batch data.
+ */
+type BatchMappingItem = {
+    /**
+         * The mapping controls the column index of the batch data source. This will be used if the value is >= 0.
+         * For values smaller we will use the static value.
+         */
+    Mapping: number;
+    /**
+     * The static value will to use for this variable item. This will only be used if the mapping index is < 0.
+     */
+    StaticValue: string;
+}
+
+/**
  * The mapping elements defines how a variable item will be mapped using the batch data.
  * The item can be mapped either against a column through an index or mapped against a constant static value.
  */
-interface BatchMappingElement {
+type BatchMappingElement = {
     /**
      * The mapping key defines the variable item by name. What specifically this represents is fully controlled by the script.
      */
@@ -71,27 +137,19 @@ interface BatchMappingElement {
     /**
      * The mapping item then defines how this variable item relates to the batch data source.
      */
-    MappingItem: {
-        /**
-         * The mapping controls the column index of the batch data source. This will be used if the value is >= 0.
-         * For values smaller we will use the static value.
-         */
-        Mapping: number;
-        /**
-         * The static value will to use for this variable item. This will only be used if the mapping index is < 0.
-         */
-        StaticValue: string;
-    }
+    MappingItem: BatchMappingItem;
 }
 
 /**
- * Methods used for the batch operation of the product. Note that in order for this to work, a batch plugin has to be configured against the product in admin.
+ * The _Batch_ interface holds methods used for the batch operation of MegaEdit. Note that in order for this to work, a batch plugin has to be configured against the product in admin.
  * The batch plugin will then control the format and functionality of the batch operation.
  */
 interface Batch {    
     /**
      * Saves the batch data. The batch data format is controlled by the batch plugin applied against the product.
+     * 
      * E.g. for the CSV batch plugin, the data is a string of comma separated values following the CSV specification.
+     * 
      * This call will also update the pricing.
      * @param data The data to save in the correct format based on the batch plugin applied against the product.
      * @param callback The function will be triggered when the save operation is complete. The callback result will be passed a BatchSaveResult object.
@@ -106,9 +164,9 @@ interface Batch {
      * 
      * Note: the format of the data set is controlled by the batch plugin applied against the product.
      * 
-     * You can control via a separate parameter getPreviouslyLoaded if you want to load the data from the server or return the previously loaded data. 
+     * You can control via the separate parameter _getPreviouslyLoaded_ if you want to load the data from the server or return the previously loaded data. 
      * Note: this will only work if you request the info only.
-     * * 
+     * 
      * @param infoOnly Boolean flag to control if only the info object or the full data set should be loaded.
      * @param callback The callback is triggered once the data is loaded. The callback result will be passed a BatchLoadInfoResponse or BatchLoadFullResponse object, depending on the infoOnly flag.
      * @param getPreviouslyLoaded Boolean flag to control if the data should be loaded from the server or the previously loaded data should be returned. This will only work if you request the info only.
@@ -130,7 +188,7 @@ interface Batch {
      * 
      * Then the data will be mapped and a mapped result will be returned
      * @param numRecords The maximum number of records to load. Note that we will not return more as the Infigo Settings value of BatchNumPreviewRecords, no matter the parameter value. But we can return less.
-     * @param callback The callback with the mapped data object.
+     * @param callback The callback with the mapped data object. The keys are the mapping keys (or variable items), and the values the already mapped values.
      */
     LoadPreview(numRecords: number, callback: (mappedData: { [key: string]: string }) => void): void;
     /**

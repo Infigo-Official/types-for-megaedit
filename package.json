@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Type definitions for MegaEdit Scripting",
   "dependencies": {},
+  "types": "v1/index.d.ts",
   "devDependencies": {
-    "better-docs": "^2.7.2"
+    "typedoc": "^0.24.8",
+    "typescript": "^5.1.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "npx typedoc"
   },
   "repository": {
     "type": "git",
