@@ -26,9 +26,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@infigo-official'
-        # cache: 'npm'
+        cache: 'npm'
     - run: npm install
     - run: npm run docs
     - uses: actions/upload-pages-artifact@v2
@@ -36,6 +34,6 @@ jobs:
         path: "docs"
     - uses: actions/deploy-pages@v2
     - run: npm ci
-    - run: npm publish
+    - run: npm publish --registry=https://npm.pkg.github.com/
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
