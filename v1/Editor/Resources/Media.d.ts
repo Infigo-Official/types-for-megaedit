@@ -7,13 +7,21 @@
 /**
  * A media album holds media items uploaded by the user categorized by a name. Media items can be used for image fields.
  */
-interface MediaAlbum extends ResourceCategory {
+interface MediaAlbum {
+    /**
+     * The unique id of the media album
+     */
+    readonly id: number;
+    /**
+     * The name of the media album.
+     */
+    readonly name: string;
     /**
      * The description of the media album.
      */
     readonly description: string;
     /**
-     * The item limit defines a maximum number of elements within the album.
+     * The item limit defines a maximum number of elements within the album. A value of -1 indicates no active limit.
      */
     readonly itemLimit: number;
     /**
