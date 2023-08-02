@@ -295,12 +295,9 @@ type ImageMetaData = {
  * A media item represents either a user uploaded image or a clip art image.
  * It can be a raster image (PNG, JPG, TIFF and GIF) or a PDF document.
  * In case of PDF's multi page media items are supported. Within MegaEdit, the first page would be the main media item, the other pages then children.
+ * This is an abstract interface - in actual use there are either {@link UserMediaItem} or {@link ClipartItem} instances.
  */
-interface MediaItem {
-    /**
-     * The media item id (number)
-     */
-    readonly id: number;
+interface MediaItem {    
     /**
      * The media item name - usually the file name
      */
@@ -336,6 +333,10 @@ interface MediaItem {
  */
 interface UserMediaItem extends MediaItem {
     /**
+     * The media item id (number)
+     */
+    readonly id: number;
+    /**
      * The id of the parent media album the media item belongs to.
      */
     readonly parentAlbum: number;
@@ -361,6 +362,10 @@ interface UserMediaItem extends MediaItem {
  * This media item represents a media provided by the template configuration via admin.
  */
 interface ClipartItem extends MediaItem {
+    /**
+     * The media id (file name) of the clipart.
+     */
+    readonly id: string;
     /**
      * The id of the clipart album the media item belongs to. Only set for clipart type items.
      */
