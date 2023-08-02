@@ -45,6 +45,7 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
         scope: '@Infigo-Official'
     - run: npm ci
+    - run: echo registry=https://npm.pkg.github.com >> .npmrc
     - run: npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ github.token  }}
