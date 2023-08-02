@@ -35,9 +35,7 @@ jobs:
         path: "docs"
     - uses: actions/deploy-pages@v2
     - run: npm ci
-    - run: npm publish --provenance --access public
-      # npm Publish errors despite correctly updating the package
-      continue-on-error: true
+    - run: npm publish --provenance --access public      
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN  }}
 
@@ -45,6 +43,8 @@ jobs:
       with:
         node-version: '16.x'
         registry-url: 'https://npm.pkg.github.com'
+        scope: '@Infigo-Official'
+    - run: npm ci
     - run: npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ github.token  }}
