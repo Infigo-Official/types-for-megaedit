@@ -208,7 +208,8 @@ interface DocumentHandler {
 }
 
 /**
- * The Document object is the entry point for all items related to the current document or job. 
+ * The job object is the entry point for all items related to the current document or job.
  * This includes the content of the job (fields, pages), the data stored against the document, product attributes, ids or name and provides functions to save the job or add it to the cart.
+ * This is an alternative to the old and deprecated "Document" object, which should not be used anymore.
  */
-declare const Document: DocumentHandler;
+declare const Job: DocumentHandler;

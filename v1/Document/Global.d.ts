@@ -4,11 +4,11 @@
  * @example
  * // Load current configuration - see developer tools for the result
  * console.log("The current canvas and canvas size:");
- * console.log(Document.Global.Get.CanvasAndSize());
+ * console.log(Job.Global.Get.CanvasAndSize());
  * console.log("The current output type:");
- * console.log(Document.Global.Get.OutputType());
+ * console.log(Job.Global.Get.OutputType());
  * console.log("The current stock item:");
- * console.log(Document.Global.Get.StockItem());
+ * console.log(Job.Global.Get.StockItem());
  * 
  * @module Document / Global Components
  */

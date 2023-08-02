@@ -15,7 +15,7 @@
             var csv = XLSX.utils.sheet_to_csv(wb.Sheets[wb.SheetNames[0]]);
 
             // Save the CSV data now
-            Document.Batch.Save(csv, function(shortInfo) {            
+            Job.Batch.Save(csv, function(shortInfo) {            
                 Editor.UI.ShowMessage(shortInfo.Valid ? "Success" : "Failure: " + shortInfo.error);
                 console.log(shortInfo);
             });

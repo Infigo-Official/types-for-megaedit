@@ -15,7 +15,7 @@ Editor.ServerSide.BlockServerSideOutputCreation(true);
 // Next we get the data object for the current record.
 Editor.ServerSide.GetServerSideDataObject(function (data) {
     // and we update the mapped data for the current record.
-    Editor.ServerSide.SaveMappedData({ "jobId": Document.JobId(), "recordId": data.RecordNumber }, function () {
+    Editor.ServerSide.SaveMappedData({ "jobId": Job.JobId(), "recordId": data.RecordNumber }, function () {
         // now we can unblock so other scripts (e.g. batch script) can use that information.
         Editor.ServerSide.BlockServerSideOutputCreation(false);
     });

@@ -12,7 +12,7 @@
  */
 declare enum EditorDataTarget {
     /**
-     * The job target stores the data against the current document. This is the same as when using {@link Document.Data}. Can be always read and written.
+     * The job target stores the data against the current document. This is the same as when using {@link DocumentHandler.Data}. Can be always read and written.
      */
     Job = 'Job',
     /**

@@ -1,7 +1,7 @@
 /**
  * This module holds definitions which are shared across other modules.
  * 
- * @module General / Helper Definitions
+ * @module Helper / General Types
  */
 
 /**

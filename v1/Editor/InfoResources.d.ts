@@ -546,6 +546,9 @@ type ScriptCustomerModel = {
     CanGetGlobalAdditionalData: boolean;
 }
 
+/**
+ * The type of the category entity entry.
+ */
 declare enum CategoryEntityValueType {
     Text = 'text',
     Textarea = 'textarea',

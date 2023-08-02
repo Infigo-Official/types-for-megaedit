@@ -363,7 +363,7 @@ declare enum TextFieldMode {
  */
 declare enum TextFieldTextDirection {
     /**
-     * Inherit the setting from the document. See {@link Document.GetBaseDirection()}.
+     * Inherit the setting from the document. See {@link Job.GetBaseDirection}.
      */
     Inherit = 'Inherit',
     /**

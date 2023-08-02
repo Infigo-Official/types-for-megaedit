@@ -626,6 +626,9 @@ type MegaEditEventObject = {
     stopPropagation(): void;    
 }
 
+/**
+ * Interface to register, listen and broadcast events within the editor.
+ */
 interface Events {
     /**
      * Register for custom actions. Custom actions are used to add custom functionality to the editor for standard behaviour. This allows a script to adjust the functionality.

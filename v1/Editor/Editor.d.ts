@@ -147,7 +147,7 @@ interface EditorHandler {
     /**
      * Interface giving access to the field selection functionality including getting and setting the selection.
      */
-    readonly Selection: Selection;
+    readonly Selection: EditorSelection;
     /**
      * Interface giving access to the current canvas view including the zoom level and the scroll position.
      * Function to retrieve and change the current view.

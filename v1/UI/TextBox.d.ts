@@ -3,46 +3,6 @@
  * @module UI / Control / Text Box
  */
 
-
-/**
- * Event handler for the key events.
- */
-type KeyboardEvent = {
-    /**
-     * The alt key was pressed.
-     */
-    readonly altKey: boolean;
-    /**
-     * The code value of the physical key.
-     */
-    readonly code: string;
-    /**
-     * The ctrl key was pressed.
-     */
-    readonly ctrlKey: boolean;
-    /**
-     * The string representing the event.
-     */
-    readonly key: string;
-    /**
-     * Flag indicating that the event is fired in between compositionstart and compositionend.
-     * Note: Those events are currently not supported by MegaEdit.
-     */
-    readonly isComposing: boolean;
-    /**
-     * The meta key was pressed.
-     */
-    readonly metaKey: boolean;
-    /**
-     * The key is being held down, causing the event to fire repeatedly.
-     */
-    readonly repeat: boolean;
-    /**
-     * The shift key was pressed.
-     */
-    readonly shiftKey: boolean;
-}
-
 /**
  * Text box interface
  */

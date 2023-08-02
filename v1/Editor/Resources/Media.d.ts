@@ -331,6 +331,9 @@ interface MediaItem {
     readonly type: MediaType; 
 }
 
+/**
+ * This media item represents a media uploaded or provided by the end user.
+ */
 interface UserMediaItem extends MediaItem {
     /**
      * The id of the parent media album the media item belongs to.
@@ -354,6 +357,9 @@ interface UserMediaItem extends MediaItem {
     readonly meta: ImageMetaData | null;
 }
 
+/**
+ * This media item represents a media provided by the template configuration via admin.
+ */
 interface ClipartItem extends MediaItem {
     /**
      * The id of the clipart album the media item belongs to. Only set for clipart type items.

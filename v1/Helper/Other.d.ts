@@ -6,7 +6,7 @@
 /**
  * The console object is used to log messages for debugging purposes.
  */
-interface Console {
+interface InfigoConsole {
     /**
      * Logs a message for debugging purposes.
      * On the browser this will show up in the console (simialr to console.log).
@@ -19,7 +19,8 @@ interface Console {
 /**
  * The console object is used to log messages for debugging purposes.
  */
-declare const Console: Console;
+declare const Console: InfigoConsole;
+
 
 /**
  * The round helper is used to round numbers to a given scale.

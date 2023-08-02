@@ -55,6 +55,9 @@ interface DimensionalItem {
  */
 type BatchMapping = {[placeholder: string]: BatchMappingItem};
 
+/**
+ * Interface for a wide range of utility functions.
+ */
 interface Helper {
     /**
      * Escapes the HTML characters in the given text using https://github.com/mathiasbynens/he

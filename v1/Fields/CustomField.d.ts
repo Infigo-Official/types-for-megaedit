@@ -43,14 +43,13 @@ interface CustomFieldCanvas {
     readonly height: number;
     /**
      * Generate the 2d drawing context. This is of type CanvasRenderingContext2D {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D}
-     * Apply a cast to use it in typescript.
      * 
      * The drawing context can be used almost normally with a few exceptions:
      * - most, but not all drawing commands are supported: check the console log for any warnings
      * - the color format is MegaEdit's internal format, not jsut RGB. You can use CMYK or spot colors as well in the drawing commands.
      * @param type Must be "2d"
      */
-    getContext(type: "2d"): unknown;
+    getContext(type: "2d"): CanvasRenderingContext2D;
     /**
      * Converts the canvas to a data url.
      * @param type Optional type - defaults to "image/png" - see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL}
@@ -63,7 +62,7 @@ interface CustomFieldCanvas {
      * @param type The type of the blob - defaults to "image/png" - see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob}
      * @param encoderOptions Optional encoder options when the type supports them (e.g. JPEG or webp)
      */
-    toBlob(callback: (blob: unknown) => void, type?: string, encoderOptions?: number): void;
+    toBlob(callback: (blob: Blob) => void, type?: string, encoderOptions?: number): void;
     /**
      * Serialize the drawing commands issued so far into the field definition.
      * The field will then reflect the drawing commands when rendered.

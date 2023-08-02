@@ -1,13 +1,18 @@
 {
-    "compilerOptions": {
-        "lib": ["es6"]
+    "compilerOptionsDisabled": {
+        "lib": ["es6"],
+        "allowJs": true
     },
     "typedocOptions": {
         "entryPoints": ["./v1"],
         "entryPointStrategy": "expand",
         "out": "docs",
-        "disableSources": true
+        "disableSources": true,
+        "readme": "DocumentationHome.md",
+        "excludePrivate": true,
+        "excludeProtected": true,
+        "includeVersion": true,
+        "excludeNotDocumented": true
     },
-    "allowJs": true,
     "include": [ "./v1/**/*.d.ts" ],
 }

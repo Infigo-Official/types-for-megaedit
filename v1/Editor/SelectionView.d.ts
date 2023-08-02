@@ -7,7 +7,7 @@
 /**
  * This interface allows to interact with the current selection within the editor.
  */
-interface Selection {
+interface EditorSelection {
     /**
      * Adds text to the current cursor location/selection.
      * Will only do something if a text field is currently being edited.
