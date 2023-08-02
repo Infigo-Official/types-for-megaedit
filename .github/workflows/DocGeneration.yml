@@ -35,7 +35,7 @@ jobs:
         path: "docs"
     - uses: actions/deploy-pages@v2
     - run: npm ci
-    - run: npm publish --provenance --access public
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN  }}
 
@@ -43,6 +43,6 @@ jobs:
       with:
         node-version: '16.x'
         registry-url: 'https://npm.pkg.github.com'
-    - run: npm publish --provenance --access public
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ github.token  }}

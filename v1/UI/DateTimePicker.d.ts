@@ -7,12 +7,33 @@
  * Specifies a specific day of the week.
  */
 declare enum WeekDay { 
+    /**
+     * Monday
+     */
     Monday = 'monday',
+    /**
+     * Tuesday
+     */
     Tuesday = 'tuesday',
+    /**
+     * Wednesday
+     */
     Wednesday = 'wednesday',
+    /**
+     * Thursday
+     */
     Thursday = 'thursday',
+    /**
+     * Friday
+     */
     Friday = 'friday',
+    /**
+     * Saturday
+     */
     Saturday = 'saturday',
+    /**
+     * Sunday
+     */
     Sunday = 'sunday' 
 }
 

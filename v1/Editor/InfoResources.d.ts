@@ -550,12 +550,33 @@ type ScriptCustomerModel = {
  * The type of the category entity entry.
  */
 declare enum CategoryEntityValueType {
+    /**
+     * A category entity value of type text.
+     */
     Text = 'text',
+    /**
+     * A category entity value of type text area.
+     */
     Textarea = 'textarea',
+    /**
+     * A category entity value of type integer.
+     */
     Int = 'int',
+    /**
+     * A category entity value of type float.
+     */
     Float = 'float',
+    /**
+     * A category entity value of type boolean.
+     */
     Checkbox = 'checkbox',
+    /**
+     * A category entity value of type single selection.
+     */
     Dropdown = 'dropdown',
+    /**
+     * A category entity vaoue of type radio.
+     */
     Radio = 'radio'
 }
 

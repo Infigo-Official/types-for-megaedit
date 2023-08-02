@@ -1,6 +1,6 @@
 {
   "name": "@infigo/types-for-megaedit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Type definitions for MegaEdit Scripting",
   "dependencies": {},
   "types": "v1/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Infigo-Offical/types-for-megaedit.git"
+    "url": "git+https://github.com/Infigo-Official/types-for-megaedit.git"
   },
   "keywords": [
     "typedefinitions",
@@ -27,9 +27,9 @@
   "author": "Infigo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Infigo-Offical/types-for-megaedit/issues"
+    "url": "https://github.com/Infigo-Official/types-for-megaedit/issues"
   },
-  "homepage": "https://github.com/Infigo-Offical/types-for-megaedit#readme",
+  "homepage": "https://github.com/Infigo-Official/types-for-megaedit#readme",
   "files": [
     "v1",
     "package.json",

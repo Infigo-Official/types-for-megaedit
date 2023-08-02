@@ -65,7 +65,7 @@ interface DocumentHandler {
     /**
      * The fields object gives access to the fields of the job including field management functions like adding, removing or editing fields.
      */
-    readonly Fields: object;
+    readonly Fields: Fields;
     /**
      * The data object gives access to the data stored against the job itself.
      */
@@ -73,7 +73,7 @@ interface DocumentHandler {
     /**
      * The pages object gives access to the pages of the job including page management functions like adding, removing or editing pages.
      */
-    readonly Pages: object;    
+    readonly Pages: Pages;    
     /**
      * Retrieve the product id of the product currently being edited.
      * @returns {number} Returns the product id of the product currently being edited. 

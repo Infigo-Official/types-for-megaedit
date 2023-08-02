@@ -115,7 +115,7 @@ type Address = {
     /**
      * An object holding POI's (point of interest) as key-value pairs.
      */
-    readonly tags: object;
+    readonly tags: Record<string, string>;
 }
 
 /**

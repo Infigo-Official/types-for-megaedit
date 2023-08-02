@@ -34,7 +34,7 @@ type FieldMeasureResult = {
     /**
      * The style (rich text) of the overflowed text.
      */
-    overflowStyle: object;
+    overflowStyle: Record<string, RichTextEntry[]> | null;
     /**
      * The overflowed text.
      */

@@ -144,7 +144,7 @@ interface Helper {
      * @param fieldOrType The custom field or the custom field type to get the class for.
      * @returns The custom field class or null if no class is registered for the given field or type.
      */
-    GetCustomFieldClass(fieldOrType: CustomField | string): object | null;
+    GetCustomFieldClass(fieldOrType: CustomField | string): unknown | null;
     /**
      * Clears a previously triggered timeout based on the timeout id returned by {@link Helper.SetTimeOut} to avoid the timeout to be triggered.
      * @param timeoutId The timeout id to clear.

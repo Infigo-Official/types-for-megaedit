@@ -497,7 +497,7 @@ declare enum FieldEventType {
      * - can be cancelled
      * - field object holds the field which should be inserted. Note that the field does not exist and is just the copy of the field which will be inserted.
      */
-    BeforeFieldInsert = "Before.Field.Insert", //field object -> only for paste events
+    BeforeFieldInsert = "Before.Field.Insert",
     /**
      * Called before a field is being added to the editor via the UI.
      * - event data: {@link FieldAddEventData}

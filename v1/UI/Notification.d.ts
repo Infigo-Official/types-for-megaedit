@@ -10,11 +10,29 @@
  * https://bulma.io/documentation/elements/notification/#colors
  */
 declare enum NotificationBlockType {
+    /**
+     * Primary notification
+     */
     PrimaryNotification = "primary",
+    /**
+     * Link Notification
+     */
     LinkNotification = "link",
+    /**
+     * Info Notification
+     */
     InfoNotification = "info",
+    /**
+     * Success Notification
+     */
     SuccessNotification = "success",
+    /**
+     * Warning Notification
+     */
     WarningNotification = "warning",
+    /**
+     * Danger Notification
+     */
     DangerNotification = "danger"
 }
 
