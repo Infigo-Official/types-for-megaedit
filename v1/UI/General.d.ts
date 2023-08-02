@@ -70,7 +70,7 @@ interface MEUILayout extends MEUIBase {
     /**
      * The UI elements which are children of this UI element.
      */
-    readonly Items: MEUIBase[];
+    Items: MEUIBase[];
 }
 
 /**

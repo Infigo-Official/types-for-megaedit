@@ -24,27 +24,31 @@ interface MEUITextArea extends MEUISizeBase {
      */
     ValueHtmlEncoded: string;
     /**
-     * Flag indicating if the text area supports bold text. Note that all fonts must support those variants.
+     * Flag indicating if the text area supports bold text. Note that all fonts must support those variants. Only valid if rich text is supported.
      */
     SupportBold: boolean;
     /**
-     * Flag indicating if the text area supports italic text. Note that all fonts must support those variants.
+     * Flag indicating if the text area supports italic text. Note that all fonts must support those variants. Only valid if rich text is supported.
      */
     SupportItalic: boolean;
     /**
-     * Flag indicating if the text area supports font size changes.
+     * Flag indicating if the text area supports font size changes. Only valid if rich text is supported.
      */
     SupportFontSize: boolean;
     /**
-     * Flag indicating if the text area supports font family changes. Please provide a list of supported fonts in {@link RichTextFontArray}.
+     * Flag indicating if the text area supports font family changes. Please provide a list of supported fonts in {@link RichTextFontArray}. Only valid if rich text is supported.
      */
     SupportFont: boolean;
     /**
-     * Flag indicating if the text area supports underline formatting.
+     * Flag indicating if the text area supports underline formatting. Only valid if rich text is supported. Only valid if rich text is supported.
      */
     SupportUnderline: boolean;
     /**
-     * The list of available fonts to use. Must be the font family names and all fonts must be available for the editor to use.
+     * Flag to indicate if the text area supports rich text.
+     */
+    SupportRichText: boolean;
+    /**
+     * The list of available fonts to use. Must be the font family names and all fonts must be available for the editor to use. Only valid if rich text is supported.
      */
     RichTextFontArray: string[];
     /**

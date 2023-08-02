@@ -86,7 +86,7 @@ interface Fields {
      * @param types Optional type filter. Specify a single type or an array of types to filter by. If not specified, all types will be returned.
      * @returns Returns the fields matching the specified tags and pages.
      */
-    ByPagesAndTags(tags: string | string[], pages: string | string[] | number | number[], cb: null, all: boolean, types: FieldType[] | FieldType | null): BaseField[];
+    ByPagesAndTags(tags: string | string[], pages: string | string[] | number | number[], cb: null, all: boolean, types?: FieldType[] | FieldType | null): BaseField[];
     /**
      * Return all fields matching specified tags - optionally filtered by type.
      * @param tags Either a single tag or an array of tags to filter by.
@@ -95,7 +95,7 @@ interface Fields {
      * @param types Optional type filter. Specify a single type or an array of types to filter by. If not specified, all types will be returned.
      * @returns Returns the fields matching the specified tags.
      */
-    ByTags(tags: string | string[], cb: null, all: boolean, types: FieldType[] | FieldType | null): BaseField[];
+    ByTags(tags: string | string[], cb: null, all: boolean, types?: FieldType[] | FieldType | null): BaseField[];
     /**
      * Return all fields on the specified pages - optionally filtered by type.
      * @param pages Page can be specified by either index or id and either as a single value or an array of values.

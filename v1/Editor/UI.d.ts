@@ -456,7 +456,7 @@ interface UI {
      * @param includeChildren Flag to check if children of the UI element should be updated as well. Default is false.
      * @param args A list of UI items to update.
      */
-    Update(callback: null, includeChildren: boolean, ...args: MEUIBase[]): void;
+    Update(callback: null, includeChildren: boolean, ...args: (MEUIBase|null)[]): void;
     /**
      * Removes UI elements from the editor interface.
      * @param callback [Deprecated] The callback is not required anymore and should not be used. Pass _null_ instead.

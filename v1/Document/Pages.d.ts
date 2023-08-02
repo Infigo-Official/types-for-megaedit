@@ -350,7 +350,7 @@ interface Pages {
      * @param afterPageOrId An optional parameter to define the page (via object or id) after which to insert the new page. Otherwise it will be added at the end.
      * @param ignorePageLimit Flag to control if the page limit should be ignored for the new page (e.g. would allow to go over the maximum count). This can only be used for server side code in the output generation stage.
      */
-    Add(callback?: (page: Page | null) => void, afterPageOrId?: string | Page, ignorePageLimit?: boolean): void;
+    Add(callback?: (page: Page | null) => void, afterPageOrId?: string | Page | null, ignorePageLimit?: boolean): void;
     /**
      * Deletes a page from the document. Note that there are two areas which control the delete feature. At first comes the product configuration which defines which pages can never be deleted. In addition, a script can mark a page as not deletable.
      * Only the first constraint will be checked here. The script setting is for UI only.
