@@ -1,6 +1,6 @@
 {
   "name": "@infigo/types-for-megaedit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Type definitions for MegaEdit Scripting",
   "dependencies": {},
   "types": "v1/index.d.ts",
