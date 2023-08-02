@@ -8,5 +8,5 @@ Use and install the package to get the best experience and IntelliSense support 
 
 ```
 npm init
-npm install @infigo/types-for-megaedit
+npm i @infigo-official/types-for-megaedit
 ```
