@@ -42,16 +42,6 @@ declare enum EditorDataTarget {
 }
 
 /**
- * The result object returned as array by the {@link EditorData.GetProductExternalKeys} function.
- */
-type ProductExternalKeysResponse = {
-    /**
-     * The key of the external product data entry.
-     */
-    Key: string;
-}
-
-/**
  * The result object returned as array by the {@link EditorData.GetAllProductExternalItems} function.
  */
 type ProductExternalDataResponse = {
@@ -121,7 +111,7 @@ interface EditorData {
      * Get all available external product data entry keys.
      * @param callback The callback function which will be called with the data once it has been retrieved. It will return an array of keys.
      */
-    GetProductExternalKeys(callback: (keys: ProductExternalKeysResponse[]) => void): void;
+    GetProductExternalKeys(callback: (keys: string[]) => void): void;
     /**
      * Return the product external data object by a given key.
      * @param key The key to retrieve.

@@ -460,10 +460,10 @@ interface Loc {
      * The optional data parameter can be used to replace placeholders in the localized string.
      * 
      * @param key The key of the localized string. Please ensure to exclude the prefix.
-     * @param data If specified, the localized string will be replaced with the given data. The data object should be a dictionary with the placeholder name as key and the replacement value as value.
+     * @param data If specified, the localized string will be replaced with the given data. The data object should be a dictionary with the placeholder name as key and the replacement value as value which will be converted to text.
      * @returns The localized string, optionally formated with the given data.
      */
-    Get(key: string, data?: {[key: string]: string}): string;
+    Get(key: string, data?: {[key: string]: any}): string;
     /**
      * Performs the replace method on the given format string with the given data.
      * The format has to use "<<" and ">>" as key delimiters.
@@ -471,5 +471,5 @@ interface Loc {
      * @param data The data object should be a dictionary with the placeholder name as key and the replacement value as value.
      * @returns The final formatted string.
      */
-    Replace(format: string, data: {[key: string]: string}): string;
+    Replace(format: string, data: {[key: string]: any}): string;
 }

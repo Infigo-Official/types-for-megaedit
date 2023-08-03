@@ -46,6 +46,24 @@ type FieldMeasureResult = {
 }
 
 /**
+ * Helper interface to define if text has been adjusted due to missing glyphs.
+ */
+type TextChangedResponse = {
+    /**
+     * Flag indicating if glyphs have been replaced. Usually they are just removed.
+     */
+    changed: boolean; 
+    /**
+     * The original text with all the glyphs.
+     */
+    text?: string; 
+    /**
+     * The replaced text with the replaced glyphs.
+     */
+    replacedText?: string
+}
+
+/**
  * The fields interface allows to interact with the fields. Retrieve them, manipulate them and perform additional helper operations.
  */
 interface Fields {
@@ -167,7 +185,7 @@ interface Fields {
      * @param entireTextFlow If this is true we will extract the text from an entire text flow if the field is part of it. If false, we will extract only the text from the field itself. Default is false.
      * @returns The text as HTML variant.
      */
-    GetTextAsHtml(fieldOrId: string | TextField, cb: null, includeFieldSettings?: boolean, tagLimiters?: string[], entireTextFlow?: boolean): string;
+    GetTextAsHtml(fieldOrId: string | TextField, cb?: null, includeFieldSettings?: boolean, tagLimiters?: string[], entireTextFlow?: boolean): string;
     /**
      * Set the text of the field in a limited HTML format. MegaEdit rich text format is only a very small subset and is very limited in what it can represent compared to HTML. This is the prefered method to set text with rich text formatting.
      * @param fieldOrId The text field directly or the id of the text field.
@@ -175,7 +193,7 @@ interface Fields {
      * @param cb Optional callback to be triggered once the text has been set.
      * @param tagLimiters This is an array of size two where the first element is the opening tag, and the second element is the closing tag used as the tag limiter. Standard value is ['<' , '>'].
      */
-    SetTextAsLimitedHtml(fieldOrId: string | TextField, text: string, cb?: (success: boolean, self: TextField) => void, tagLimiters?: string[]): void;
+    SetTextAsLimitedHtml(fieldOrId: string | TextField, text: string, cb?: (success?: boolean, self?: TextField, response?: TextChangedResponse) => void, tagLimiters?: string[]): void;
     /**
      * Get the current font size used in a text field as if fit to box would be enabled. This allows to set the fit to box options directly in the parameters.
      * Note that you have to either specify the values or the defaults as  below will be used. It will not use the field settings for it automatically.

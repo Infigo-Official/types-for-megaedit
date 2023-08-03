@@ -643,9 +643,9 @@ interface Events {
      * Registers a custom field and makes it usable in this editor session.
      * Custom fields which are part of the job but the type has not been registered cannot work as expected.
      * @param definition The custom field definition.
-     * @param callback The callback function to call when the custom field is fully registered.
+     * @param callback The callback function to call when the custom field is fully registered with a success flag
      */
-    RegisterCustomField(definition: CustomFieldDefinition, callback: () => void): void;
+    RegisterCustomField(definition: CustomFieldDefinition, callback: (success: boolean) => void): void;
     /**
      * This function will ensure that the the custom field is fully functional. With asyncronous loading of scripts and depending on the actions of those scripts it could take some time until the custom field is fully registered and available.
      * This method can be used to ensure that the setup of that field has finished and is available for use.

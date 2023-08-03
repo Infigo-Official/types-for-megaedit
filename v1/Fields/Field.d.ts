@@ -25,7 +25,11 @@ declare enum FieldType {
     /**
      * A custom field is a new field type defined by the script. There can be many different custom fields and the script can define the behaviour, appareance and configuration options of the field.
      */
-    CustomField = 'CustomField'
+    CustomField = 'CustomField',
+    /**
+     * This identifies a clipart field. NOTE: this is only valid for creating new fields via {@link CreateField}. For existing fields use {@link FieldType.ImageField} and the properties of {@link ImageField} to identify the field as a clipart field.
+     */
+    ClipartField = 'ClipartField'    
 }
 
 /**
@@ -396,9 +400,9 @@ interface BaseField {
     Save(): void;
     /**
      * Saves the changes of the script back into the editor, while allowing to control certain actions via a save options object. For further information of what can be saved {@link Save}
-     * @param options The save options to use for this operation.
+     * @param options The save options to use for this operation. If the parameter is a boolean, the value is used for the 'addUndo' flag of {@link SaveOptions}.
      */
-    SaveWithOptions(options: SaveOptions): void;        
+    SaveWithOptions(options: SaveOptions | boolean): void;        
     /**
      * Converts a relative field position (a position within the field from the top/left corner of the field without the rotation applied) to a global location on the canvas.
      * @param point The point as the relative position.

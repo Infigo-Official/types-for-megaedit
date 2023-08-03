@@ -171,7 +171,7 @@ interface Batch {
      * @param callback The callback is triggered once the data is loaded. The callback result will be passed a BatchLoadInfoResponse or BatchLoadFullResponse object, depending on the infoOnly flag.
      * @param getPreviouslyLoaded Boolean flag to control if the data should be loaded from the server or the previously loaded data should be returned. This will only work if you request the info only.
      */
-    Load(infoOnly: boolean, callback: (response: BatchLoadInfoResponse | BatchLoadFullResponse) => void, getPreviouslyLoaded?: boolean): void;
+    Load(infoOnly: boolean, callback: (response: BatchLoadInfoResponse | BatchLoadFullResponse) => void, getPreviouslyLoaded?: boolean): void;    
     /**
      * This method will clear and delete the batch data stored against the job.
      * This call will also update the pricing.
@@ -194,13 +194,13 @@ interface Batch {
     /**
      * Saves the defined mapping against the job. The mapping is important to control how the batch data will be used.
      * You can use the Editor's UI helper to generate a mapping dialog easily.
-     * @param mapping 
-     * @param callback 
+     * @param mapping The mapping object is a dictionary where the key is the mapping key (or variable item) and the value is the BatchMappingElement object.
+     * @param callback The callback is triggered once the mapping is saved.
      */
-    SaveMapping(mapping: BatchMappingElement[], callback?: (result: boolean) => void): void;
+    SaveMapping(mapping: Record<string, BatchMappingItem>, callback?: (result: boolean) => void): void;
     /**
      * Load the mapping data from the job.
-     * @param callback 
+     * @param callback The callback is triggered once the mapping is loaded. The callback result will be passed a BatchMappingElement array.
      */
     GetMapping(callback?: (mappedData: BatchMappingElement[]) => void): void;            
 }

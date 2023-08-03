@@ -81,9 +81,9 @@ interface Invent {
          * Sets a variable value
          * @param variableName The variable name to set the value for.
          * @param value The new value for the variable.
-         * @param callback The calback is triggered when the value is set.
+         * @param callback The callback is triggered when the value is set.
          */
-        Set(variableName: string, value: string, callback: () => void): void;
+        Set(variableName: string, value: string, callback?: () => void): void;
     }
     /**
      * The events available for the Invent connection.

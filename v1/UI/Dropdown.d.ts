@@ -10,7 +10,7 @@ type MEUIDropDownOption = {
     /**
      * The value of the option.
      */
-    Value: string;
+    Value: unknown;
     /**
      * The label to show for the option.
      */
