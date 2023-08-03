@@ -11,6 +11,7 @@
         "readme": "DocumentationHome.md",
         "excludePrivate": true,
         "excludeProtected": true,
+        "excludeExternals": false,
         "includeVersion": true,
         "excludeNotDocumented": true
     },

@@ -42,9 +42,9 @@ interface MEUIDataTable extends MEUISizeBase {
     Data: (string | number)[][];
     /**
      * Registers a callback for the change event.
-     * @param event Change event when the data table is changed.
+     * @param dataTable The data table component.
      */
-    OnChange(event: (dataTable: MEUIDataTable) => void): void;
+    OnChange: (dataTable: MEUIDataTable) => void;
 }
 
 /**

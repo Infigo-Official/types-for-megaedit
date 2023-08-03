@@ -28,10 +28,10 @@ interface MEUINumber extends MEUIBase {
      */
     Step: number;
     /**
-     * Change event of the number control.
-     * @param event Event gets fired when the value of the number control changes.
+     * Change event of the number control when the value is changed.
+     * @param number The number control.
      */
-    OnChange(event: (number: MEUINumber) => void): void;
+    OnChange: (number: MEUINumber) => void;
 }
 
 /**

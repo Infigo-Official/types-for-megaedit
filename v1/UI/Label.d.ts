@@ -17,9 +17,9 @@ interface MEUILabel extends MEUIBase {
     Text: string;
     /**
      * Optional onclick handler for the label.
-     * @param event The event handler.
+     * @param label The label which was clicked.
      */
-    OnClick(event: (label: MEUILabel) => void): void;
+    OnClick: (label: MEUILabel) => void;
 }
 
 /**

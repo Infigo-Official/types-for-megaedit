@@ -21,9 +21,9 @@ interface MEUISwitch extends MEUIBase {
     Value: boolean;
     /**
      * Change event when the switch is toggled.
-     * @param event Triggered when the switch is toggled.
+     * @param checkbox The switch component which changed.
      */
-    OnChange(event: (checkbox: MEUISwitch) => void): void;    
+    OnChange: (checkbox: MEUISwitch) => void;    
 }
 
 /**

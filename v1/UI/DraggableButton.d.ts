@@ -41,14 +41,16 @@ interface MEUIDraggableButton extends MEUIBase {
     Target: DropTarget;
     /**
      * The click event of the draggable button.
-     * @param callback The callback function to call when the button is clicked.
+     * @param button The button which was clicked.	
      */
-    OnClick(callback: (button: MEUIDraggableButton) => void): void;
+    OnClick: (button: MEUIDraggableButton) => void;
     /**
      * Registers a callback when the button has been dropped. The callback will be called with the button and the position where it was dropped.
-     * @param callback The callback function to call when the button has been dragged and dropped on a valid target.
+     * @param button The button which was dragged
+     * @param event The event which was triggered. Always "Dragged"
+     * @param position The position where the button was dropped on the canvas.
      */
-    OnDragged(callback: (button: MEUIDraggableButton, event: "Dragged", position: Point) => void): void;
+    OnDragged: (button: MEUIDraggableButton, event: "Dragged", position: Point) => void;
 }
 
 /**

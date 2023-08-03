@@ -53,29 +53,31 @@ interface MEUITextArea extends MEUISizeBase {
     RichTextFontArray: string[];
     /**
      * Event gets fired when the value of the text area changes.
-     * @param event The callback to trigger when the value changes.
+     * @param textArea The text area which changed.
      */
-    OnChange(event: (textArea: MEUITextArea) => void): void;
+    OnChange: (textArea: MEUITextArea) => void;
     /**
      * Event gets fired when the text area gets focus.
-     * @param event The callback to trigger when the text area gets focus.
+     * @param textArea The text area which got focus.
      */
-    OnFocus(event: (textArea: MEUITextArea) => void): void;
+    OnFocus: (textArea: MEUITextArea) => void;
     /**
      * Event gets fired when the text area loses focus.
-     * @param event The callback to trigger when the text area loses focus.
+     * @param textArea The text area which lost focus.
      */
-    OnBlur(event: (textArea: MEUITextArea) => void): void;
+    OnBlur: (textArea: MEUITextArea) => void;
     /**
      * Event gets fired when a key is released
-     * @param event The callback to trigger when a key is released.
+     * @param textArea The text area which key was released.
+     * @param event The keyboard event which was fired.
      */
-    OnKeyUp(event: (textArea: MEUITextArea, event: KeyboardEvent) => void): void;
+    OnKeyUp: (textArea: MEUITextArea, event: KeyboardEvent) => void;
     /**
      * Event gets fired when a key is pressed
-     * @param event The callback to trigger when a key is pressed.
+     * @param textArea The text area which key was pressed.
+     * @param event The keyboard event which was fired.
      */
-    OnKeyDown(event: (textArea: MEUITextArea, event: KeyboardEvent) => void): void;
+    OnKeyDown: (textArea: MEUITextArea, event: KeyboardEvent) => void;
 }
 
 /**

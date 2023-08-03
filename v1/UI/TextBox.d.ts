@@ -25,29 +25,29 @@ interface MEUITextBox extends MEUIBase {
     ValueHtmlEncoded: string;
     /**
      * Event gets fired when the value of the text box changes.
-     * @param event The callback to trigger when the value changes.
+     * @param textBox The text box which changed.
      */
-    OnChange(event: (textBox: MEUITextBox) => void): void;
+    OnChange: (textBox: MEUITextBox) => void;
     /**
      * Event gets fired when the text box gets focus.
-     * @param event The callback to trigger when the text box gets focus.
+     * @param textBox The text box which got focus.
      */
-    OnFocus(event: (textBox: MEUITextBox) => void): void;
+    OnFocus: (textBox: MEUITextBox) => void;
     /**
      * Event gets fired when the text box loses focus.
-     * @param event The callback to trigger when the text box loses focus.
+     * @param textBox The text box which lost focus.
      */
-    OnBlur(event: (textBox: MEUITextBox) => void): void;
+    OnBlur: (textBox: MEUITextBox) => void;
     /**
      * Event gets fired when a key is released
-     * @param event The callback to trigger when a key is released.
+     * @param textBox The text box which key was released.
      */
-    OnKeyUp(event: (textBox: MEUITextBox, event: KeyboardEvent) => void): void;
+    OnKeyUp: (textBox: MEUITextBox, event: KeyboardEvent) => void;
     /**
      * Event gets fired when a key is pressed
-     * @param event The callback to trigger when a key is pressed.
+     * @param textBox The text box which key was pressed.
      */
-    OnKeyDown(event: (textBox: MEUITextBox, event: KeyboardEvent) => void): void;
+    OnKeyDown: (textBox: MEUITextBox, event: KeyboardEvent) => void;
 }
 
 /**

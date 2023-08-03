@@ -36,10 +36,10 @@ interface MEUITimePicker extends MEUIBase {
      */
     MouseWheel: boolean;
     /**
-     * Register a change event handler.
-     * @param event Change event when the time picker value is changed.
+     * Register a change event handler for the time picker.
+     * @param data The time picker component.
      */
-    OnChange(event: (data: MEUITimePicker) => void): void;
+    OnChange: (data: MEUITimePicker) => void;
 }
 
 /**

@@ -38,10 +38,12 @@ interface MEUIHtmlNode extends MEUIBase {
      */
     readonly Type: "HtmlNode";    
     /**
-     * Optional onclick handler for the label.
-     * @param event The callback function to call when the HTML node is added to the DOM.
+     * Optional handler which is triggered when the node is added to the DOM.
+     * @param self The HTML node itself.
+     * @param event The event name. Always "Callback".
+     * @param payload The payload of the callback function indicating the HTML node.
      */
-    Callback(event: (self: MEUIHtmlNode, event: 'Callback', payload: HtmlNodeInfo) => void): void;
+    Callback: (self: MEUIHtmlNode, event: 'Callback', payload: HtmlNodeInfo) => void;
 }
 
 /**

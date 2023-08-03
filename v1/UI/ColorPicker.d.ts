@@ -37,14 +37,14 @@ interface MEUIColorPicker extends MEUIBase {
     AllowSpot: boolean;
     /**
      * Change event when the color is adjusted - is fired when the dialog is still open but color is changed.
-     * @param event The callback to trigger when the color changes.
+     * @param picker The color picker which changed.
      */
-    OnChange(event: (picker: MEUIColorPicker) => void): void;
+    OnChange: (picker: MEUIColorPicker) => void;
     /**
      * Event gets fired when the color picker dialog is closed.
-     * @param event The callback to trigger when the dialog is closed.
+     * @param picker The color picker which was closed.
      */
-    OnClickOk(event: (picker: MEUIColorPicker) => void): void;
+    OnClickOk: (picker: MEUIColorPicker) => void;
 }
 
 /**

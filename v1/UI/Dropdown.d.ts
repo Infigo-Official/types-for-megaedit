@@ -31,10 +31,10 @@ interface MEUIDropDown extends MEUIBase {
      */
     Options: (MEUIDropDownOption | string)[];
     /**
-     * Registers a change event handler.
-     * @param event Change event when the dropdown value is changed.
+     * Registers a change event handler when the drop down value is changed.
+     * @param dropDown The drop down which changed.
      */
-    OnChange(event: (dropDown: MEUIDropDown) => void): void;
+    OnChange: (dropDown: MEUIDropDown) => void;
     /**
      * The currently selected value. Must match the value of one of the options.
      */

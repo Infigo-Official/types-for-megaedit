@@ -23,9 +23,9 @@ interface MEUITabLayout extends MEUILayout {
     CurrentTab: string;
     /**
      * Event is triggered when the tab changes.
-     * @param callback 
+     * @param self The tab layout itself.
      */
-    OnTabSelected(callback: (index: number) => void): void;
+    OnTabSelected: (self: MEUITableLayout) => void;
     /**
      * Adds a new tab to the tab layout.
      * @param header The header of the new tab

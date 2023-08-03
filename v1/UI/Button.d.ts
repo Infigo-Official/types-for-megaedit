@@ -18,9 +18,9 @@ interface MEUIButton extends MEUIBase {
     ButtonText: string;
     /**
      * The click event of the button.
-     * @param callback The callback function to call when the button is clicked.
+     * @param button The button which was clicked.
      */
-    OnClick(callback: (button: MEUIButton) => void): void;
+    OnClick: (button: MEUIButton) => void;
 }
 
 /**

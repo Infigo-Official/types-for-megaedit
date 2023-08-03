@@ -21,9 +21,9 @@ interface MEUICheckBox extends MEUIBase {
     Value: boolean;
     /**
      * Change event when the checkbox value is changed.
-     * @param event Change event when the checkbox value is changed.
+     * @param checkbox The checkbox which changed.
      */
-    OnChange(event: (checkbox: MEUICheckBox) => void): void;    
+    OnChange: (checkbox: MEUICheckBox) => void;    
 }
 
 /**

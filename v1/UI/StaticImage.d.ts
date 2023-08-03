@@ -19,9 +19,9 @@ interface MEUIStaticImage extends MEUISizeBase {
     Url: string;
     /**
      * Optional onclick handler for the static image.
-     * @param event The event handler. 
+     * @param label The static image which was clicked.
      */
-    OnClick(event: (label: MEUIStaticImage) => void): void;
+    OnClick: (label: MEUIStaticImage) => void;
 }
 
 /**

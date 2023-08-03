@@ -227,7 +227,7 @@ interface Resources {
      * @param media The parent media item - aka the first page
      * @param callback Returns the child media items for the given parent media item. If this is only a single page document, the callback will be called with an empty array.
      */
-    MediaChildItems(media: MediaItem, callback: (items: UserMediaItem[]) => void): void;
+    MediaChildItems(media: UserMediaItem, callback: (items: UserMediaItem[]) => void): void;
     /**
      * This returns all media items in the currently selected album. If the user changes the current album, this method will return the new items.
      * @param callback The callback function that will be called once the media items are retrieved. Same output as {@link MediaItems}.
@@ -238,7 +238,7 @@ interface Resources {
      * @param id The media item id to delete.
      * @param callback Callback function that will be called once the media item is deleted.
      */
-    DeleteMediaItem(id: string, callback?: (response: GeneralServerResponse) => void): void;
+    DeleteMediaItem(id: number, callback?: (response: GeneralServerResponse) => void): void;
     /**
      * Upload a media item. This triggers the upload dialog for a single upload.
      * This will upload into the default album.

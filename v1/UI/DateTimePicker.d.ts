@@ -102,9 +102,9 @@ interface MEUIDateTimePicker extends MEUIBase {
     EnabledWeekDays: WeekDayConfiguration;
     /**
      * Register a change event handler.
-     * @param event Change event when the date time picker value is changed.
+     * @param data The date time picker component.
      */
-    OnChange(event: (data: MEUIDateTimePicker) => void): void;
+    OnChange: (data: MEUIDateTimePicker) => void;
 }
 
 /**

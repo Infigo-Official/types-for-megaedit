@@ -18,15 +18,18 @@ interface MEUIIFrame extends MEUISizeBase {
      */
     Src: string;
     /**
-     * Registers a callback for the Load event.
-     * @param callback The callback is triggered when the iFrame has been loaded.
+     * Registers a callback for the Load event called when the iFrame has been loaded.
+     * @param iframe The iFrame which was loaded.
+     * @param event The event name. Always "Load".
      */
-    OnLoad(callback: (iframe: MEUIIFrame, event: "Load") => void): void;
+    OnLoad: (iframe: MEUIIFrame, event: "Load") => void;
     /**
      * Registers for the Message event when the iFrame sends data to the script.
-     * @param callback The callback is triggered when the iFrame sends data to the script.
+     * @param iframe The iFrame which sent the message.
+     * @param event The event name. Always "Message".
+     * @param message The message received from the iframe.
      */
-    OnMessage(callback: (iframe: MEUIIFrame, event: "Message", message: string) => void): void;
+    OnMessage: (iframe: MEUIIFrame, event: "Message", message: string) => void;
     /**
      * Sends a message to the iFrame.
      * @param message The message to send

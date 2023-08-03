@@ -32,10 +32,10 @@ interface MEUISlider extends MEUIBase {
      */
     ShowValue: boolean;
     /**
-     * Change event of the number control.
-     * @param event Event gets fired when the value of the number control changes.
+     * Change event of the slider when the value is changed.
+     * @param number The slider which changed.
      */
-    OnChange(event: (number: MEUISlider) => void): void;
+    OnChange: (number: MEUISlider) => void;
 }
 
 /**

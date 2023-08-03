@@ -30,10 +30,10 @@ interface MEUIDownload extends MEUIBase {
      */
     FileName: string;
     /**
-     * Registers a callback for the download event.
-     * @param callback Event gets fired when the download is initiated.
+     * Registers a callback for the download event when the download is initiated.
+     * @param download The download component where a download was initiated.
      */
-    OnDownload(callback: (download: MEUIDownload) => void): void;
+    OnDownload: (download: MEUIDownload) => void;
 }
 
 /**

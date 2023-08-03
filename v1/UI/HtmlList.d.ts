@@ -82,9 +82,9 @@ interface MEUIHtmlList extends MEUIBase {
     readonly CurrentObject: MEUIHtmlListOption;
     /**
      * Registers a change event handler.
-     * @param event Change event when the list value is changed.
+     * @param htmlList The HTML list component.
      */
-    OnChange(event: (htmlList: MEUIHtmlList) => void): void;
+    OnChange: (htmlList: MEUIHtmlList) => void;
 }
 
 /**

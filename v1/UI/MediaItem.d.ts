@@ -34,19 +34,21 @@ interface MEUIMediaItem extends MEUISizeBase {
     IsDraggable: boolean;
     /**
      * The click event of the draggable button.
-     * @param callback The callback function to call when the button is clicked.
+     * @param button The draggable button which was clicked.
      */
-    OnClick(callback: (button: MEUIMediaItem) => void): void;
+    OnClick: (button: MEUIMediaItem) => void;
     /**
      * Register a callback for the drag start event.
-     * @param callback The callback function to call when the media item is dragged.
+     * @param button The draggable button which was dragged
+     * @param event The event type - always "DragStart"
      */
-    OnDragStart(callback: (button: MEUIMediaItem, event: "DragStart") => void): void;
+    OnDragStart: (button: MEUIMediaItem, event: "DragStart") => void;
     /**
      * Register a callback for the drag stop event.
-     * @param callback The callback function to call when the media item is not dragged anymore.
+     * @param button The draggable button which has been dragged
+     * @param event The event type - always "DragStop"
      */
-    OnDragStop(callback: (button: MEUIMediaItem, event: "DragStop") => void): void;    
+    OnDragStop: (button: MEUIMediaItem, event: "DragStop") => void;    
 }
 
 /**

@@ -273,29 +273,39 @@ interface MEUIDataGrid extends MEUIBase {
     Filterable: boolean;
     /**
      * Register a change event handler. The selected item is passed as the third parameter.
-     * @param event The callback to trigger when the selection changes.
+     * @param grid The data grid which selection has changed
+     * @param event The event name. Always "Selection".
+     * @param selection The selected data.
      */
-    OnSelection(event: (grid: MEUIDataGrid, event: 'Selection', selection: unknown) => void): void;
+    OnSelection: (grid: MEUIDataGrid, event: 'Selection', selection: unknown) => void;
     /**
      * Register a change event handler. The changed item is passed as the third parameter.
-     * @param event The callback to trigger when a row is edited.
+     * @param grid The data grid where an item has been edited
+     * @param event The event name. Always "Edit".
+     * @param editedItem The edited data.
      */
-    OnEdit(event: (grid: MEUIDataGrid, event: 'Edit', editedItem: unknown) => void): void;
+    OnEdit: (grid: MEUIDataGrid, event: 'Edit', editedItem: unknown) => void;
     /**
      * Register a change event handler. The added item is passed as the third parameter.
-     * @param event The callback to trigger when a row is added.
+     * @param grid The data grid where an item has been added
+     * @param event The event name. Always "Add".
+     * @param newItem The added data.
      */
-    OnAdd(event: (grid: MEUIDataGrid, event: 'Add', newItem: unknown) => void): void;
+    OnAdd: (grid: MEUIDataGrid, event: 'Add', newItem: unknown) => void;
     /**
      * Register a change event handler. The deleted item is passed as the third parameter.
-     * @param event The callback to trigger when a row is deleted.
+     * @param grid The data grid where an item has been deleted
+     * @param event The event name. Always "Delete".
+     * @param deletedItem The deleted data.
      */
-    OnDelete(event: (grid: MEUIDataGrid, event: 'Delete', deletedItem: unknown) => void): void;
+    OnDelete: (grid: MEUIDataGrid, event: 'Delete', deletedItem: unknown) => void;
     /**
      * Register a change event handler. The duplicated item is passed as the third parameter.
-     * @param event The callback to trigger when a row is duplicated.
+     * @param grid The data grid where an item has been duplicated
+     * @param event The event name. Always "Duplicate".
+     * @param duplicatedItem The duplicated data.
      */
-    OnDuplicate(event: (grid: MEUIDataGrid, event: 'Duplicate', duplicatedItem: unknown) => void): void;
+    OnDuplicate: (grid: MEUIDataGrid, event: 'Duplicate', duplicatedItem: unknown) => void;
     /**
      * Adds a custom action to all rows. The callback will be called when the action is clicked.
      * The second parameter is the custom action key, the third parameter is the item of that row.

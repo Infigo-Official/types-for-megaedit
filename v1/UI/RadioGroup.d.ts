@@ -30,10 +30,10 @@ interface MEUIRadioGroup extends MEUIBase {
      */
     Options: (MEUIRadioButtonItem | string)[];
     /**
-     * Registers a change event handler.
-     * @param event Change event when the radio button value is changed.
+     * Registers a change event handler when the radio button value is changed.
+     * @param dropDown The radio button group which changed.
      */
-    OnChange(event: (dropDown: MEUIRadioGroup) => void): void;
+    OnChange: (dropDown: MEUIRadioGroup) => void;
     /**
      * The currently selected value. Must match the value of one of the options.
      */
