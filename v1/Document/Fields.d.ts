@@ -121,7 +121,7 @@ interface Fields {
      * @param types Optional type filter. Specify a single type or an array of types to filter by. If not specified, all types will be returned.
      * @returns Returns the fields on the specified pages.
      */
-    ByPages(pages: number | number[] | string | string[], cb: null, types?: FieldType[] | FieldType | null): BaseField[];
+    ByPages(pages: number | number[] | string | string[], cb?: null, types?: FieldType[] | FieldType | null): BaseField[];
     /**
      * Create a new custom field for a specific sub type.
      * @param customType The custom field subtype as identified when registering the custom field.

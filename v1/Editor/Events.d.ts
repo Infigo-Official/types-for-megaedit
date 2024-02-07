@@ -464,7 +464,19 @@ declare enum EditorEventType {
      * - event data: _null_
      * - can be cancelled
      */ 
-    BeforeSaveEmbedded = "SaveEmbeddedPreSave"    
+    BeforeSaveEmbedded = "SaveEmbeddedPreSave",
+    /**
+     * Called after the view port in the editor has been updated.
+     * - event data: _null_
+     * - cannot be cancelled
+     */
+    UpdateViewPort = "Editor.UpdateViewPort",
+    /**
+     * Called when modifications are made to the fabric.js canvas.
+     * - event data: _null_
+     * - cannot be cancelled
+     */
+    FabricModified = "Fabric.Modified",
 }
 
 /**

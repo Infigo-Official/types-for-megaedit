@@ -331,6 +331,14 @@ interface BaseField {
          * Flag to control if the field is visible or hidden. Hidden fields will not show in the UI and not on the output.
          */
         hidden: boolean;
+        /**
+         * Flag to control if the field is visible or hidden. Flipped fields will be mirrored horizontally.
+         */
+        flipX: boolean;
+        /**
+         * Flag to control if the field is vertically flipped or not. Flipped fields will be mirrored vertically.
+         */
+        flipY: boolean;
     };
     /**
      * The info or meta data details of the field.
