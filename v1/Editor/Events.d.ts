@@ -224,6 +224,13 @@ type SingleFieldRearrangeEventData = {
 type TextFieldTextChangeEventData = string;
 
 /**
+ * The event data for the {@link FieldEventType.FieldTextResorted} event.
+ */
+type TextFieldResortedEventData =  {
+    text: string
+};
+
+/**
  * A union type of all possible event data types for the {@link EditorEventType} and {@link FieldEventType} events.
  */
 type EventDataVariants = BeforeLayoutChangedEventData | AfterLayoutChangedEventData | UploadEventData | TextFlowEvent | 
@@ -613,6 +620,13 @@ declare enum FieldEventType {
      * - field object holds the selected field(s). If nothing is selected, the array will be empty.
      */
     FieldSelectionChanged = "Editor.Selection",
+    /**
+     * Called when text within a text field has been resorted.
+     * - event data: {@link TextFieldResortedEventData}
+     * - cannot be cancelled
+     * - field object holds the field in which text has been resorted.
+     */
+    FieldTextResorted = "Field.TextResorted",
 }
 
 /**
