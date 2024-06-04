@@ -337,7 +337,7 @@ interface Resources {
      * @param albumOrId The layout category or the id.
      * @param callback The callback function that will be called once the layout items are retrieved.
      */
-    LayoutItems(albumOrId: string | LayoutItem, callback: (items: LayoutItem[]) => void): void;
+    LayoutItems(albumOrId: string | LayoutCategory, callback: (items: LayoutItem[]) => void): void;
 
     /**
      * Load all mask albums. Mask albums are used for image fields.
