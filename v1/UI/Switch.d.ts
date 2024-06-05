@@ -1,6 +1,6 @@
 /**
  * A checkbox component for a single option.
- * @module UI / Control / Checkbox
+ * @module UI / Control / Switch
  */
 
 /**
