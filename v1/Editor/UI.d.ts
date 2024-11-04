@@ -65,7 +65,7 @@ declare enum EditorUiVisibilityFlag {
     /**
      * Shows or hides the page selector area.
      */
-    Pages = 'Pages'  
+    Pages = 'Pages'
 }
 
 /**
@@ -75,7 +75,7 @@ declare enum UiDestinationTarget {
     /**
      * The new fields tab when enabled within the editor.
      * Generally used to house draggable buttons which will create fields.
-     */    
+     */
     FieldsTab = 'FieldsTab',
     /**
      * The new tools tab when enabled within the editor.
@@ -166,6 +166,10 @@ declare enum UiDestinationTarget {
      * Outside the main editor container.
      */
     OutsideContainer = 'OutsideContainer',
+    /**
+     * Between the back button and menu
+     */
+    HeaderLeft = 'HeaderLeft',
 }
 
 /**
@@ -287,7 +291,7 @@ interface UI {
     "cursor": "pointer"
 });
      */
-    SetCssClass(name: string, object: {[key: string]: string}): void;
+    SetCssClass(name: string, object: { [key: string]: string }): void;
     /**
      * Updates the media usage counter to the currently correct values. Some script operations will not update the counter automatically, so this function can be used to update it manually.
      */
@@ -349,8 +353,9 @@ interface UI {
      * Displays a dialog showing a specific editable content item identified by id.
      * @param editableContentId The id of the editable content to display.
      * @param callback The callback is triggered when the dialog is closed.
+     * @param options Optional object with options to configure the dialog.
      */
-    ShowEditableContentDialog(editableContentId: number, callback: () => void): void;
+    ShowEditableContentDialog(editableContentId: number, callback?: () => void, options?: Record<string, any>): void;
     /**
      * Shows a dialog for the user to enter a text value.
      * @param message The message to display on the dialog.
@@ -371,7 +376,7 @@ interface UI {
      * @param callback The callback will be triggered once the user closes the dialog. If the user clicked OK, the success parameter will be true, otherwise if he canceled it will be false.
      * @param cssClasses Adds one or more css classes (separated by space) to the dialog - used for custom styling.
      */
-    GetUserNumber(message: string, title: string, defaultValue: number, min: number, max: number, step: number, callback: (success:boolean, input: number) => void, cssClasses: string): void;
+    GetUserNumber(message: string, title: string, defaultValue: number, min: number, max: number, step: number, callback: (success: boolean, input: number) => void, cssClasses: string): void;
     /**
      * Shows a dialog for the user to confirm a choice. The user has to click either a 'yes' or 'no' button.
      * @param msg The message to display on the dialog.
@@ -420,8 +425,8 @@ interface UI {
      * @param closeCallback The callback will be triggered when the dialog is closed.
      * @param callback The callback will be triggered when the dialog is ready. The dialog is is passed as parameter to the callback which is needed to further interact with it.
      * @param windowClass An optional CSS class to add to the dialog window.
-     */    
-    ShowDialog(title: string, uiItem: MEUIBase, actions: DialogActions, closeCallback?: () => void, callback?: DialogCallback, windowClass?: string): void;    
+     */
+    ShowDialog(title: string, uiItem: MEUIBase, actions: DialogActions, closeCallback?: () => void, callback?: DialogCallback, windowClass?: string): void;
     /**
      * Updates an existing dialog
      * - title
@@ -442,7 +447,7 @@ interface UI {
      * Method for custom fields to set the UI for the field popup dialog.
      * Up to 3 individual tabs can be used. Each tab can have a custom UI item to display.
      */
-    CustomFieldOptionDialogUi(config: CustomFieldOptionDialogConfig): void;        
+    CustomFieldOptionDialogUi(config: CustomFieldOptionDialogConfig): void;
     /**
      * Adds UI elements to the specified destination.
      * @param callback [Deprecated] The callback is not required anymore and should not be used. Pass _null_ instead.
@@ -456,7 +461,7 @@ interface UI {
      * @param includeChildren Flag to check if children of the UI element should be updated as well. Default is false.
      * @param args A list of UI items to update.
      */
-    Update(callback: null, includeChildren: boolean, ...args: (MEUIBase|null)[]): void;
+    Update(callback: null, includeChildren: boolean, ...args: (MEUIBase | null)[]): void;
     /**
      * Removes UI elements from the editor interface.
      * @param callback [Deprecated] The callback is not required anymore and should not be used. Pass _null_ instead.
