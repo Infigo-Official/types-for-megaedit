@@ -32,7 +32,7 @@ jobs:
       with:
         name: public
         path: "docs"
-    - uses: actions/deploy-pages@v2
+    - uses: actions/deploy-pages@v3
     - run: npm ci
     - run: npm publish --provenance --access public      
       env:
