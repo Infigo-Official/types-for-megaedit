@@ -33,7 +33,7 @@ type UnescapeOptions = {
      * Default value is _false_.
      */
     strict?: boolean;
-}
+};
 
 /**
  * This interface defines an object which has a size (width & height).
@@ -53,7 +53,7 @@ interface DimensionalItem {
 /**
  * A batchmapping is an object with keys for the placeholders and values for the mapping result.
  */
-type BatchMapping = {[placeholder: string]: BatchMappingItem};
+type BatchMapping = { [placeholder: string]: BatchMappingItem };
 
 /**
  * Interface for a wide range of utility functions.
@@ -83,7 +83,14 @@ interface Helper {
      * @param leading The leading will be only used if we have not retrieved a calculated height from the browser engine.
      * @returns The dimensions of the text.
      */
-    MeasureText(text: string, font: string, fontSize: number, isBold: boolean, isItalic: boolean, leading: number): Size;
+    MeasureText(
+        text: string,
+        font: string,
+        fontSize: number,
+        isBold: boolean,
+        isItalic: boolean,
+        leading: number
+    ): Size;
     /**
      * Calculates the scale factor required to fit the given diemnsional item (usually a Javascript Image object or a {@link MediaItem}) into the given width and height.
      * The crop parameter can be used to specify if the image should be cropped to fit the given dimensions fully, or if the entire image should be visible.
@@ -93,7 +100,12 @@ interface Helper {
      * @param image The image to fit into the given dimensions.
      * @returns The scale factor required to fit the given image into the given dimensions.
      */
-    GetScaleFactor(width: number, height: number, crop: boolean, image: MediaItem | DimensionalItem): number;
+    GetScaleFactor(
+        width: number,
+        height: number,
+        crop: boolean,
+        image: MediaItem | DimensionalItem
+    ): number;
     /**
      * Returns the per product setting for the minimum image resolution or 0 if no setting is configured.
      * If the value is <= 0, DPI checks will be disabled.
@@ -107,14 +119,23 @@ interface Helper {
      * @param image The image to fit into the given dimensions.
      * @returns The DPI of the given image when it is rendered into the given dimensions using the given crop flag.
      */
-    GetDpi(width: number, height: number, crop: boolean, image: MediaItem | DimensionalItem): number;
+    GetDpi(
+        width: number,
+        height: number,
+        crop: boolean,
+        image: MediaItem | DimensionalItem
+    ): number;
     /**
      * Get the DPI of the given image when it is rendered for a given Image field using the given crop flag.
      * @param field The field to test the DPI for.
      * @param image The image to test the DPI for.
      * @param crop Flag indicating if the image should be cropped to fit the given dimensions fully, or if the entire image should be visible.
      */
-    GetDpiForField(field: ImageField, image: MediaItem | DimensionalItem, crop: boolean): number;
+    GetDpiForField(
+        field: ImageField,
+        image: MediaItem | DimensionalItem,
+        crop: boolean
+    ): number;
     /**
      * Simplified similarity check for two strings. The higher the value, the more similar the strings are.
      * @param a The first string to compare.
@@ -151,7 +172,7 @@ interface Helper {
      */
     ClearTimeOut(timeoutId: number): void;
     /**
-     * Sets a timeout to trigger the given callback after the given timeout in milliseconds within the editor. 
+     * Sets a timeout to trigger the given callback after the given timeout in milliseconds within the editor.
      * Server side this will be executed immediately. Once the current calling queue has been emptied.
      * @param callback The callback function to trigger.
      * @param timeout The time in milliseconds to wait before triggering the callback (browser only).
@@ -164,7 +185,11 @@ interface Helper {
      * @param callback The callback function to trigger once the external resource is loaded.
      * @param onlyData If set to true, the external resource will be loaded as data set and passed to the callback as parameter. If set to false, the URL will be loaded as a Javascript resource and the _load_ event parameter will be passed. Default value is false.
      */
-    LoadExternal(url: string, callback?: (data?: unknown) => void, onlyData?: boolean): void;
+    LoadExternal(
+        url: string,
+        callback?: (data?: unknown) => void,
+        onlyData?: boolean
+    ): void;
     /**
      * Generate a new random GUID as string.
      * @returns The new GUID as string.
@@ -235,7 +260,11 @@ interface Helper {
      * @param config The optional configuration to overwrite. If null, the configuration configured for the instance will be used.
      * @returns Boolean flag indicating if the script was executed successfully.
      */
-    ExecuteMegaScript(megascriptInstanceName: string, script?: string | null, config?: string): boolean;
+    ExecuteMegaScript(
+        megascriptInstanceName: string,
+        script?: string | null,
+        config?: string
+    ): boolean;
     /**
      * The text helper sub interface has helper functions to work with text.
      */
@@ -243,7 +272,7 @@ interface Helper {
         /**
          * Performs variable data replacement on the given field array using the given replacement data.
          * The operation depends on the field type.
-         * 
+         *
          * @param fieldArray The field listing to perform the replacement on.
          * @param replacementData The replacement data to use with keys (placeholder names) and values (replacement values). This is used for text and barcode fields.
          * @param optionalVariableTags The start and end tags for the text replacement.
@@ -253,7 +282,36 @@ interface Helper {
          * @param replacementText The optional replacement text allows to feed in the text to replace for the field from the outside - essentially overriding the field value. Default value is _null_ meaning the field value will be used.
          * @param callback The callback function to trigger once the replacement is complete.
          */
-        PerformFieldDataReplacement(fieldArray: BaseField[], replacementData: { [key: string]: string }, optionalVariableTags?: { start: string; end: string }, optionalImageRetrievalFunction?: () => void, replaceCaseInvariant?: boolean, textSuppressionMode?: TextSuppressionMode, replacementText?: string, callback?: () => void): void;
+        PerformFieldDataReplacement(
+            fieldArray: BaseField[],
+            replacementData: { [key: string]: string },
+            optionalVariableTags?: { start: string; end: string },
+            optionalImageRetrievalFunction?: () => void,
+            replaceCaseInvariant?: boolean,
+            textSuppressionMode?: TextSuppressionMode,
+            replacementText?: string,
+            callback?: () => void
+        ): void;
+
+        /**
+         * Suppresses segments of the given text based on whether corresponding data is present.
+         *
+         * The function identifies segments delimited by the specified start and end tags and checks
+         * if each segment's associated key exists in the provided data. If a key is missing,
+         * the segment is suppressed according to the specified mode.
+         *
+         * @param text - The input text that may contain segments eligible for suppression.
+         * @param tags - An object defining the start and end tags that mark the segments.
+         * @param data - An object mapping keys to values; a missing key indicates that its segment should be suppressed.
+         * @param mode - The suppression mode to apply. Defaults to null (i.e., no suppression) if not provided.
+         * @returns The resulting text after applying the suppression logic.
+         */
+        SuppressText(
+            text: string,
+            tags: { start: string; end: string },
+            data: { [key: string]: string },
+            mode: TextSuppressionMode
+        ): string;
     };
     /**
      * The config sub interface allows to interact with the script configuration.
@@ -311,7 +369,10 @@ interface Helper {
          * @param options The optional CSV options to use for stringifying.
          * @returns The CSV string.
          */
-        stringify: (table: (string | number)[][], options?: CsvOptions) => string;
+        stringify: (
+            table: (string | number)[][],
+            options?: CsvOptions
+        ) => string;
         /**
          * Tests the uploaded file result to see if it is a valid CSV file.
          * @param uploadedFile The uploaded file result to test.
@@ -319,7 +380,11 @@ interface Helper {
          * @param options The CSV options to use for testing. Default value is null.
          * @returns True if the uploaded file result is a valid CSV file, and false if it is not.
          */
-        isContentValidCSV: (uploadedFile: MEUIUploadFile, checkFileExtension?: boolean, options?: CsvOptions) => boolean;
+        isContentValidCSV: (
+            uploadedFile: MEUIUploadFile,
+            checkFileExtension?: boolean,
+            options?: CsvOptions
+        ) => boolean;
     };
 }
 
@@ -330,15 +395,15 @@ declare enum TextSuppressionMode {
     /**
      * This will remove static element to the left of empty placeholders.
      */
-    Left = 'Left',
+    Left = "Left",
     /**
      * This will remove static element to the right of empty placeholders.
      */
-    Right = 'Right',
+    Right = "Right",
     /**
      * This will remove static element to the left and right of empty placeholders.
      */
-    Full = 'Full'
+    Full = "Full",
 }
 
 /**
@@ -357,4 +422,4 @@ type CsvOptions = {
      * Flag indicating if numbers should be converted to numbers or should remain text in the parsed output. Default value is false.
      */
     disableNumberConversion?: boolean;
-}
+};

@@ -1,39 +1,39 @@
 {
-  "name": "@infigo-official/types-for-megaedit",
-  "version": "1.0.18",
-  "description": "Type definitions for MegaEdit Scripting",
-  "dependencies": {},
-  "types": "v1/index.d.ts",
-  "devDependencies": {
-    "@types/jest": "^29.5.3",
-    "jest": "^29.6.2",
-    "ts-jest": "^29.1.1",
-    "typedoc": "^0.24.8",
-    "typescript": "^5.1.6"
-  },
-  "scripts": {
-    "test": "jest",
-    "docs": "npx typedoc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Infigo-Official/types-for-megaedit.git"
-  },
-  "keywords": [
-    "typedefinitions",
-    "megaedit",
-    "infigo"
-  ],
-  "author": "Infigo",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Infigo-Official/types-for-megaedit/issues"
-  },
-  "homepage": "https://github.com/Infigo-Official/types-for-megaedit#readme",
-  "files": [
-    "v1",
-    "package.json",
-    "README.md",
-    "LICENSE"
-  ]
+    "name": "@infigo-official/types-for-megaedit",
+    "version": "1.0.19",
+    "description": "Type definitions for MegaEdit Scripting",
+    "dependencies": {},
+    "types": "v1/index.d.ts",
+    "devDependencies": {
+        "@types/jest": "^29.5.3",
+        "jest": "^29.6.2",
+        "ts-jest": "^29.1.1",
+        "typedoc": "^0.24.8",
+        "typescript": "^5.1.6"
+    },
+    "scripts": {
+        "test": "jest",
+        "docs": "npx typedoc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Infigo-Official/types-for-megaedit.git"
+    },
+    "keywords": [
+        "typedefinitions",
+        "megaedit",
+        "infigo"
+    ],
+    "author": "Infigo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Infigo-Official/types-for-megaedit/issues"
+    },
+    "homepage": "https://github.com/Infigo-Official/types-for-megaedit#readme",
+    "files": [
+        "v1",
+        "package.json",
+        "README.md",
+        "LICENSE"
+    ]
 }
