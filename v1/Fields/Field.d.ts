@@ -27,7 +27,7 @@ declare enum FieldType {
      */
     CustomField = 'CustomField',
     /**
-     * This identifies a clipart field. NOTE: this is only valid for creating new fields via {@link CreateField}. For existing fields use {@link FieldType.ImageField} and the properties of {@link ImageField} to identify the field as a clipart field.
+     * This identifies a clipart field. NOTE: this is only valid for creating new fields via {@link Job.Fields.CreateField}. For existing fields use {@link FieldType.ImageField} and the properties of {@link ImageField} to identify the field as a clipart field.
      */
     ClipartField = 'ClipartField'    
 }
