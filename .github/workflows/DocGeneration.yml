@@ -18,12 +18,12 @@ jobs:
       packages: write
 
     steps:
-      
-    - uses: actions/checkout@v3
+
+    - uses: actions/checkout@v5
     - name: Build Docs and Deploy package
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v6
       with:
-        node-version: '16.x'
+        node-version: 'lts/*'
         registry-url: 'https://registry.npmjs.org'
         cache: 'npm'
     - run: npm install
@@ -34,13 +34,11 @@ jobs:
         path: "docs"
     - uses: actions/deploy-pages@v4
     - run: npm ci
-    - run: npm publish --provenance --access public      
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN  }}
+    - run: npm publish --provenance --access public
 
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v6
       with:
-        node-version: '16.x'
+        node-version: 'lts/*'
         registry-url: 'https://npm.pkg.github.com'
         scope: '@Infigo-Official'
     - run: npm ci
